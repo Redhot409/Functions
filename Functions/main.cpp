@@ -6,22 +6,42 @@ int Sum(int a, int b);
 int Diff(int a, int b);
 int Prod(int a, int b);
 double Quote(int a, int b);
-int Factorial(int a);
-double Power(int a, int b);
+long long int Factorial(int n);
+double Power(double a, int n);
+
+//#define CALC
+//#define Factorial
+#define POWERR
+
+
 
 void main()
 {
+	system("CLS");
 	setlocale(LC_ALL, "");
-	int a, b;
+#ifdef CALC
+	/*int a, b;
 	cout << "Введите два числа: "; cin >> a >> b;
 	int c = Sum(a, b);
 	cout << a << " + " << b << " = " << c << endl;
 	cout << a << " - " << b << " = " << Diff(a, b) << endl;
 	cout << a << " * " << b << " = " << Prod(a, b) << endl;
-	cout << a << " / " << b << " = " << Quote(a, b) << endl;
-	cout << a << " ^ " << b << " = " << Power(a, b) << endl;
-	cout << a << " ! " << " = " << Factorial(a) << endl;
+	cout << a << " / " << b << " = " << Quote(a, b) << endl;*/
+#endif // CALC
 
+	
+#ifdef FACTORIAL
+	int n;
+	cout << "Введите число для вычисления факториала :"; cin >> n;
+	cout << "Factorial(n)" << endl;
+#endif // FACTORIAL
+
+	int a,n;
+	cout << "Введите основание степени :"; cin >> a;
+	cout << "Введите показатель степени :"; cin >> n;
+	cout << a << "^" << n << "=" << Power(a, n) << endl;
+	system("PAUSE");
+	main();
 }
 
 int Sum(int a, int b)
@@ -41,33 +61,27 @@ double Quote(int a, int b)
 {
 	return (double)a / b;
 }
-int Factorial(int a)
+long long int Factorial(int n)
 {
-	int c = 1;
-	for (int i = 1; i <=a; i++)
+	long long int f = 1;
+	for (int i = 1; i <=n; i++)
 	{
-		c*= i;
+		f*= i;
+	}
+	return f;
+}
+
+double Power(double a, int n)
+{
+	double c = 1;
+	if (n < 0)
+	{
+		a = 1 / a;
+		n = -n;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		c *= a;
 	}
 	return c;
-}
-double Power(int a, int b)
-{
-	if (b > 0)
-	{
-		int c = 1;
-		for (int i = 1; i <= b; i++)
-		{
-			c *= a;
-		}
-		return c;
-	}
-	if (b < 0)
-	{
-		 double c = 1;
-		for (int i = 1; i <=abs(b); i++)
-		{
-			c /= a;
-		}
-		return c;
-	}
 }
