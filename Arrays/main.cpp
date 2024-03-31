@@ -77,7 +77,7 @@ void main()
 	cout << "Минимальное значение элементов массива char :" << Min_value(Crr, nN) << endl;
 	cout << "Максимальное значение элементов массива char :" << Max_value(Crr, nN) << endl;
 	Shift_left(Crr, nN, number_of_shift);
-	Shift_right(Crr, nN, number_of_shift);
+	Shift_right(Crr, nN, number_of_shift); cout << endl;
 
 }
 void FillRand(int Arr[],const long N,int minRand,int maxRand) 
