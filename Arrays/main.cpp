@@ -1,38 +1,46 @@
-﻿//Arrays
+﻿//i_Arrays
 #include <iostream>
 using namespace std;
 
-void FillRand(int Arr[],const long N, int minRand=0, int maxRand=100);
-void FillRand(double Arr[],const long N, int minRand=0, int maxRand=100);
-void FillRand(char Arr[],const long N, int minRand=0, int maxRand=100);
+#define tab "\t"
+#define delimeter "\n----------------------------------------------------------\n"
 
-void Print(const int Arr[], const long N);
-void Print(const double Arr[], const long N);
-void Print(const char Arr[], const long N);
+const int ROWS = 3;
+const int COLS = 4;
 
-int Sum(const int Arr[],const long N);
-double Sum(const double Arr[],const long N);
-char Sum(const char Arr[],const long N);
+void FillRand(int Arr[],const long n, int minRand=0, int maxRand=100);
+void FillRand(double irr[],const long n, int minRand=0, int maxRand=100);
+void FillRand(char Arr[],const long n, int minRand=0, int maxRand=100);
+void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
 
-double Avg_value(const int Arr[], long N);
-double Avg_value(const double Arr[], long N);
-char Avg_value(const char Arr[], long N);
+void Print(const int Arr[], const long n);
+void Print(const double Arr[], const long n);
+void Print(const char Arr[], const long n);
+void Print(const int Arr[ROWS][COLS], const int ROWS, const int COLS);
 
-int Min_value(const int Arr[], long N);
-double Min_value(const double Arr[], long N);
-char Min_value(const char Arr[], long N);
+int Sum(const int Arr[],const long n);
+double Sum(const double Arr[],const long n);
+char Sum(const char Arr[],const long n);
 
-int Max_value(const int Arr[], long N);
-double Max_value(const double Arr[], long N);
-char Max_value(const char Arr[], long N);
+double Avg_value(const int i_Arr[], long n);
+double Avg_value(const double i_Arr[], long n);
+char Avg_value(const char i_Arr[], long n);
 
-void Shift_left( int Arr[], long N,int number_of_shift);
-void Shift_left( double Arr[], long N, int number_of_shift);
-void Shift_left( char Arr[], long N, int number_of_shift);
+int Min_value(const int Arr[], long n);
+double Min_value(const double Arr[], long n);
+char Min_value(const char Arr[], long n);
 
-void Shift_right(int Arr[], int N, int number_of_shift);
-void Shift_right(double Arr[], int N, int number_of_shift);
-void Shift_right(char Arr[], int N, int number_of_shift);
+int Max_value(const int Arr[], long n);
+double Max_value(const double Arr[], long n);
+char Max_value(const char Arr[], long n);
+
+void Shift_left( int Arr[], long n,int number_of_shift);
+void Shift_left( double Arr[], long n, int number_of_shift);
+void Shift_left( char Arr[], long n, int number_of_shift);
+
+void Shift_right(int Arr[], int n, int number_of_shift);
+void Shift_right(double Arr[], int n, int number_of_shift);
+void Shift_right(char Arr[], int n, int number_of_shift);
 
 
 void main()
@@ -44,28 +52,39 @@ void main()
 	cin >> number_of_shift;
 
 	//массив int
-	const long N = 5;
-	int Arr[N];
-	FillRand(Arr, N);
-	Print(Arr, N);
-	cout<<"Сумма элементов массива :" << Sum(Arr, N)<<endl;
-	cout<<"Среднее значение элементов массива :" << Avg_value(Arr, N)<<endl;
-	cout<<"Минимальное значение элементов массива :" << Min_value(Arr, N)<<endl;
-	cout<<"Максимальное значение элементов массива :" << Max_value(Arr, N)<<endl;
-	Shift_left(Arr, N, number_of_shift); 
-	Shift_right(Arr, N, number_of_shift); cout << endl;
+	const long I_SIZE = 5;
+	int i_Arr[I_SIZE];
+	FillRand(i_Arr, I_SIZE);
+	Print(i_Arr, I_SIZE);
+	cout<<"Сумма элементов массива :" << Sum(i_Arr, I_SIZE)<<endl;
+	cout<<"Среднее значение элементов массива :" << Avg_value(i_Arr, I_SIZE)<<endl;
+	cout<<"Минимальное значение элементов массива :" << Min_value(i_Arr, I_SIZE)<<endl;
+	cout<<"Максимальное значение элементов массива :" << Max_value(i_Arr, I_SIZE)<<endl;
+	Shift_left(i_Arr, I_SIZE, number_of_shift);
+	Shift_right(i_Arr, I_SIZE, number_of_shift);
 	
+	cout << delimeter << endl;
+
 	//массив double
-	const long n = 5;
-	double Drr[n];
-	FillRand(Drr, n); 
-	Print(Drr, n);
-	cout<<"Сумма элементов массива double :" << Sum(Drr, n)<<endl;
-	cout<<"Среднее значение элементов массива double :" << Avg_value(Drr, n)<<endl;
-	cout<<"Минимальное значение элементов массива double :" << Min_value(Drr, n)<<endl;
-	cout<<"Максимальное значение элементов массива double :" << Max_value(Drr, n)<<endl;
-	Shift_left(Drr, n, number_of_shift); 
-	Shift_right(Drr, n, number_of_shift); cout << endl;
+	const long D_SIZE = 5;
+	double Drr[D_SIZE];
+	FillRand(Drr, D_SIZE);
+	Print(Drr, D_SIZE);
+	cout<<"Сумма элементов массива double :" << Sum(Drr, D_SIZE)<<endl;
+	cout<<"Среднее значение элементов массива double :" << Avg_value(Drr, D_SIZE)<<endl;
+	cout<<"Минимальное значение элементов массива double :" << Min_value(Drr, D_SIZE)<<endl;
+	cout<<"Максимальное значение элементов массива double :" << Max_value(Drr, D_SIZE)<<endl;
+	Shift_left(Drr, D_SIZE, number_of_shift);
+	Shift_right(Drr, D_SIZE, number_of_shift);
+
+	cout << delimeter << endl;
+		
+	int i_arr_2[ROWS][COLS];
+	FillRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+
+	
+	cout << delimeter << endl;
 
 	// массив char
 	const long nN = 5;
@@ -77,8 +96,9 @@ void main()
 	cout << "Минимальное значение элементов массива char :" << Min_value(Crr, nN) << endl;
 	cout << "Максимальное значение элементов массива char :" << Max_value(Crr, nN) << endl;
 	Shift_left(Crr, nN, number_of_shift);
-	Shift_right(Crr, nN, number_of_shift); cout << endl;
-
+	Shift_right(Crr, nN, number_of_shift); 
+	
+	cout << delimeter << endl;
 }
 void FillRand(int Arr[],const long N,int minRand,int maxRand) 
 {
@@ -356,3 +376,26 @@ void Shift_right(char Arr[], int N, int number_of_shift)
 	cout << endl;
 }
 
+void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			Arr[i][j] = rand() % 100;
+		}
+	}
+}
+
+void Print(const int Arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << Arr[i][j] << tab;
+		}
+		cout << endl;
+	}
+
+}
