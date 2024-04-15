@@ -1,19 +1,9 @@
 ﻿//i_Arrays
-#include <iostream>
-using namespace std;
+#include"stdafx.h"
+#include"Constants.h" 
+#include"FillRand.h"
+//#include"FillRand.cpp" - cpp.файлы никогда не подключаются на место вызова
 
-#define tab "\t"
-#define delimeter "\n----------------------------------------------------------\n"
-
-const int ROWS = 3;
-const int COLS = 4;
-
-void FillRand(int Arr[],const long n, int minRand=0, int maxRand=100);
-void FillRand(double irr[],const long n, int minRand=0, int maxRand=100);
-void FillRand(char Arr[],const long n, int minRand=0, int maxRand=100);
-void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
-void FillRand(double Arr[ROWS][COLS], const int ROWS, const int COLS, double minRand = 0, double maxRand = 100);
-void FillRand(char Arr[ROWS][COLS], const int ROWS, const int COLS, char minRand = 0, char maxRand = 100);
 
 void Print(const int Arr[], const long n);
 void Print(const double Arr[], const long n);
@@ -66,8 +56,8 @@ void Shift_right(char Arr[ROWS][COLS], const int ROWS, const int COLS, int numbe
 
 void Sort(int Arr[], const int N);
 void Sort(int Arr[ROWS][COLS], const int ROWS, const int COLS);
-void Unique(int Arr[], const long n, int minRand = 0, int maxRand = 100);
-void Unique(int Arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
+void Unique(int Arr[], const long n);
+void Unique(int Arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void main()
 {
@@ -170,82 +160,6 @@ void main()
 
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
-
-}
-void FillRand(int Arr[],const long N,int minRand,int maxRand) 
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	for (int i = 0; i < N; i++)
-	{
-		Arr[i] = minRand + rand() % (maxRand - minRand);
-	}
-}
-void FillRand(double Arr[], const long N, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < N; i++)
-	{
-		Arr[i] = minRand + rand() % (maxRand - minRand);
-		Arr[i] /= 100;
-	}
-}
-void FillRand(char Arr[], const long N, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 10;
-	maxRand *= 10;
-	for (int i = 0; i < N; i++)
-	{
-		Arr[i] = minRand + rand() % (maxRand - minRand);
-	}
-}
-void FillRand(int Arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			Arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(double Arr[ROWS][COLS], const int ROWS, const int COLS, double minRand, double maxRand)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			Arr[i][j] = rand() % 100;
-		}
-	}
-
-}
-void FillRand(char Arr[ROWS][COLS], const int ROWS, const int COLS, char minRand, char maxRand)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			Arr[i][j] = rand() % 100;
-		}
-	}
 
 }
 
@@ -779,19 +693,50 @@ void Sort(int Arr[ROWS][COLS], const int ROWS, const int COLS)
 	cout << "Массив отсортирован за :" << iterations << endl;
 	cout << "Число перестановок элементов :" << exchanges << endl;
 }
-void Unique(int Arr[], const long n, int minRand = 0, int maxRand = 100)
+void Unique(int Arr[], const long n)
 {
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
 	for (int i = 0; i < n; i++)
 	{
-		Arr[i] = minRand + rand() % (maxRand - minRand);
-		Arr[i] /= 100;
+		bool unique;
+		do
+		{
+			Arr[i] = rand() % n;
+			unique = true;//предполагаем, что сгенерировалось уникальное число, но это надо проверить
+			for (int j = 0; j < i; j++)
+			{
+				if (Arr[i] == Arr[j])
+				{
+					unique = false;
+					break;
+				}
+			}
+		} while (!unique);
+	}
+}
+void Unique(int Arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool unique;
+			do
+			{
+				Arr[i][j] = rand() % (ROWS * COLS);
+				unique = true;//предполагаем, что сгенерировалось уникальное число, но это надо проверить
+				for (int k = 0; k <= ROWS; k++)
+				{
+					for (int l = 0; l < (k == i ? j : COLS); l++)
+					{
+						if (Arr[i][j] == Arr[k][l])
+						{
+							unique = false;
+							break;
+						}
+					}
+					if (!unique)break;
+				}
+			} while (!unique);
+		}
 	}
 }
