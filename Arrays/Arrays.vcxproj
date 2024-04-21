@@ -129,11 +129,29 @@
   <ItemGroup>
     <ClCompile Include="FillRand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Max_value.cpp" />
+    <ClCompile Include="Min_value.cpp" />
+    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="Avg_value.cpp" />
+    <ClCompile Include="Shift_left.cpp" />
+    <ClCompile Include="Shift_right.cpp" />
+    <ClCompile Include="Sort.cpp" />
+    <ClCompile Include="Sum.cpp" />
+    <ClCompile Include="Unique.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Avg_value.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="FillRand.h" />
+    <ClInclude Include="Max_value.h" />
+    <ClInclude Include="Min_value.h" />
+    <ClInclude Include="Print.h" />
+    <ClInclude Include="Shift_left.h" />
+    <ClInclude Include="Shift_right.h" />
+    <ClInclude Include="Sort.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Sum.h" />
+    <ClInclude Include="Unique.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

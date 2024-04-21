@@ -1,3 +1,4 @@
+//Constants
 #pragma once
 #define tab "\t"
 #define delimeter "\n----------------------------------------------------------\n"
