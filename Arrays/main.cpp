@@ -779,19 +779,50 @@ void Sort(int Arr[ROWS][COLS], const int ROWS, const int COLS)
 	cout << "Массив отсортирован за :" << iterations << endl;
 	cout << "Число перестановок элементов :" << exchanges << endl;
 }
-void Unique(int Arr[], const long n, int minRand = 0, int maxRand = 100)
+void Unique(int Arr[], const long n)
 {
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
 	for (int i = 0; i < n; i++)
 	{
-		Arr[i] = minRand + rand() % (maxRand - minRand);
-		Arr[i] /= 100;
+		bool unique;
+		do
+		{
+			Arr[i] = rand() % n;
+			unique = true;//ïðåäïîëàãàåì, ÷òî ñãåíåðèðîâàëîñü óíèêàëüíîå ÷èñëî, íî ýòî íàäî ïðîâåðèòü
+			for (int j = 0; j < i; j++)
+			{
+				if (Arr[i] == Arr[j])
+				{
+					unique = false;
+					break;
+				}
+			}
+		} while (!unique);
+	}
+}
+void Unique(int Arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool unique;
+			do
+			{
+				Arr[i][j] = rand() % (ROWS * COLS);
+				unique = true;//ïðåäïîëàãàåì, ÷òî ñãåíåðèðîâàëîñü óíèêàëüíîå ÷èñëî, íî ýòî íàäî ïðîâåðèòü
+				for (int k = 0; k <= ROWS; k++)
+				{
+					for (int l = 0; l < (k == i ? j : COLS); l++)
+					{
+						if (Arr[i][j] == Arr[k][l])
+						{
+							unique = false;
+							break;
+						}
+					}
+					if (!unique)break;
+				}
+			} while (!unique);
+		}
 	}
 }
