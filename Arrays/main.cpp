@@ -83,6 +83,8 @@ void main()
 	cout << "Sorted :";
 	Sort(i_Arr, I_SIZE);
 	Print(i_Arr, I_SIZE);
+	Unique(i_Arr, I_SIZE);
+	Print(i_Arr, I_SIZE);
 	
 	cout << delimeter << endl;
 
@@ -159,6 +161,11 @@ void main()
 	Print(c_arr_2, ROWS, COLS);
 
 	Sort(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+
+	cout << delimeter << endl;
+
+	Unique(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 
 }
